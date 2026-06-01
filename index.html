@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bokobá | El arte del buen café</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#79593a",
+                        "primary-fixed": "#d8e8c4",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#474741",
+                        "primary-container": "#3e4c31",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#acbc9a",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#1c1b1b",
+                        "outline": "#75786f",
+                        "on-secondary-fixed-variant": "#5e4124",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#e5e2da",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c9c6bf",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#bccca9",
+                        "on-tertiary-container": "#b8b6af",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#785839",
+                        "outline-variant": "#c5c8bd",
+                        "tertiary": "#32312c",
+                        "on-tertiary-fixed": "#1c1c17",
+                        "surface-tint": "#546346",
+                        "tertiary-container": "#484842",
+                        "secondary-container": "#fed2ab",
+                        "on-primary-fixed-variant": "#3d4b30",
+                        "secondary-fixed-dim": "#e9bf99",
+                        "on-surface-variant": "#454840",
+                        "surface-variant": "#e5e2e1",
+                        "secondary-fixed": "#ffdcbf",
+                        "surface": "#fcf9f8",
+                        "surface-dim": "#dcd9d9",
+                        "primary-fixed-dim": "#bccca9",
+                        "primary": "#28351c",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#131f08",
+                        "surface-container": "#f0eded",
+                        "inverse-surface": "#313030",
+                        "background": "#fcf9f8",
+                        "surface-bright": "#fcf9f8",
+                        "on-secondary-fixed": "#2c1601",
+                        "on-surface": "#1c1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "section-gap": "120px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "80px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(252, 249, 248, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .silk-border {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .ambient-shadow {
+            box-shadow: 0 20px 40px -10px rgba(62, 76, 49, 0.08);
+        }
+        .hero-zoom {
+            animation: zoom-out 20s ease-out infinite alternate;
+        }
+        @keyframes zoom-out {
+            from { transform: scale(1.1); }
+            to { transform: scale(1); }
+        }
+        .menu-tab {
+            background: transparent;
+            color: #75786f;
+            border: 1.5px solid #c5c8bd;
+        }
+        .menu-tab.active {
+            background: #28351c;
+            color: #ffffff;
+            border-color: #28351c;
+        }
+        .menu-tab:hover:not(.active) {
+            background: #d8e8c4;
+            color: #28351c;
+            border-color: #d8e8c4;
+        }
+        .menu-panel {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
+<div class="font-display-lg text-headline-md font-bold text-primary">
+                Bokobá
+            </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-primary font-bold border-b-2 border-primary font-body-md text-body-md" href="#hero">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#about">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#menu">Menu</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#social">Social</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#reviews">Reviews</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#contact">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg hover:bg-primary-container transition-all duration-300 font-label-sm text-label-sm uppercase tracking-widest">
+                Order Now
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden" id="hero">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-black/40 z-10"></div>
+<img class="w-full h-full object-cover hero-zoom" data-alt="A cinematic, high-quality photograph of a sophisticated coffee shop interior with warm, ambient lighting. The scene features steam rising from a polished espresso machine, rustic wooden textures, and comfortable leather seating. Large windows allow soft natural light to spill across the floor, creating a serene and inviting atmosphere in a minimalist, light-mode aesthetic with deep green accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGVZdXht-IAadc8eMobW3Kt5hNT4Zhhv7ZBT4kOQQm1DpJ29y0bay4S5aujkEOq_Xp6tUJ64dzG3lk8PJkPjLz7CBJylrhQ1WleM9aV3EqBynG2JC6Wwt67qbkVFP7X6bRIJtwbid5vkRKHsJHYJ0cA_78cW0JiCE7S_CVDMuuixClmB6ch0Fqb8Yj9wjx7DOJQLph1JcdTANaiZD_e6LOihBZGg1N5h-pEd_A774ovgku4yLh_WGgK-Y_kw4B59EndMWtOD_nnsk"/>
+</div>
+<div class="relative z-20 text-center px-margin-mobile max-w-4xl">
+<h1 class="text-white font-display-lg text-headline-lg-mobile md:text-display-lg mb-6 leading-tight">
+                Bokobá: El arte del buen café y los grandes momentos.
+            </h1>
+<p class="text-white/90 font-body-lg text-body-lg mb-10 max-w-2xl mx-auto">
+                Un refugio para los sentidos donde cada grano cuenta una historia y cada taza es un ritual de tranquilidad.
+            </p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<a class="bg-white text-primary px-10 py-4 rounded-lg font-bold hover:bg-primary-fixed transition-all duration-300 ambient-shadow" href="#menu">
+                    Ver Menú
+                </a>
+<a class="border border-white text-white px-10 py-4 rounded-lg font-bold hover:bg-white/10 backdrop-blur-md transition-all duration-300" href="https://www.google.com/maps/place/Bokoba+caf%C3%A9/@20.6247527,-103.2591715,18z/data=!4m6!3m5!1s0x8428b5007254eb65:0x991d7e5e4c2b856f!8m2!3d20.6234323!4d-103.2552233!16s%2Fg%2F11x0qyfp59" target="_blank" rel="noopener noreferrer">
+                    Cómo Llegar
+                </a>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto" id="about">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="space-y-8">
+<span class="text-secondary font-label-sm text-label-sm uppercase tracking-[0.2em]">Nuestra Esencia</span>
+<h2 class="font-headline-lg text-headline-lg leading-tight text-primary">Calidad que se siente en cada gota</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    En Bokobá, seleccionamos granos de origen único, procesados con métodos artesanales para extraer la complejidad de sus sabores. Nuestro espacio ha sido diseñado como un santuario minimalista: el lugar perfecto para reconectar contigo mismo o colaborar en tus proyectos más ambiciosos.
+                </p>
+<div class="grid grid-cols-2 gap-8 py-4">
+<div class="flex flex-col gap-2">
+<span class="text-secondary font-display-lg text-headline-lg">100%</span>
+<span class="font-label-sm text-label-sm uppercase text-outline">Arábica Premium</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-secondary font-display-lg text-headline-lg">24h</span>
+<span class="font-label-sm text-label-sm uppercase text-outline">Cold Brew Slow</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<img class="rounded-xl w-full aspect-[3/4] object-cover ambient-shadow transition-transform hover:scale-[1.02]" data-alt="A minimalist architectural shot of a clean, bright coffee shop interior. White walls, light wood furniture, and several potted green plants create a fresh, tranquil environment. The lighting is high-key and soft, highlighting the pristine, modern aesthetic and the sense of spacious luxury typical of a high-end cafe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHjUNS3HPQbqO-_P2UsN3ph9B48Nb9I_XjnQt2dVkz5aKZeK_h_RC1g8kOpW_rNv-C5cZNVqb30VBlt0tEPIt23qgDyw_6BcY9RqfwebLmyzN12_rCGiwQpW47UB78cPctqTRdJCNYy3-fcuIvFuE9MVFlOOSSNd-_ZmiTCQzo6mwKihzFZLgNpoP3QujILtw9Wjq07wYRExSzmoo_zB-QltKCkDWnZKEGk9etQ02dsizBBDBv6k-XTlQkXZuUS3YnHxbrTtuwP20"/>
+<img class="rounded-xl w-full aspect-square object-cover ambient-shadow transition-transform hover:scale-[1.02]" data-alt="Close-up of a professional barista's hands carefully pouring steamed milk into a ceramic cup of dark espresso to create intricate latte art. The setting is a clean, modern bar with a marble countertop. The image captures the focus and craftsmanship of the coffee-making process in a bright, airy aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhk91gu1wAx3Pa_e1Bvy61ruDUIB3eeLolht2osZO-nw3hxl7Ks3agnxvjylqGE3ELsmANfKKnFyqUj5XfuXgfKwu5brkMs-Jhh--6wA0w9MolwB_Q-53MXFxanpZTyjHWDE3eg95qwojihm2oOcyM5ES5oPg6G7UZwvulZrX7d5ztqeu3U4sVlJpKzewgLs3SQo7UsR6fKBHB2FmwLfG4sMp4bcFt3ugyoynuolQxRUq0VjPliV_eWktPTLUJtOsun24I9v9XL7E"/>
+</div>
+<div class="pt-12 space-y-4">
+<img class="rounded-xl w-full aspect-square object-cover ambient-shadow transition-transform hover:scale-[1.02]" data-alt="A focused shot of a minimalist wooden table in a sunlit coffee shop. On the table sits a ceramic cup of black coffee and an open notebook with a fine pen. The scene suggests a calm workspace, with soft morning light and a peaceful, productive atmosphere that emphasizes quality and clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyleDDPYaeRASqSLnnoRe5-5ml3tvzD16nKH9aXDOHvY82i6hn_VEHVQ0M-we6gAxmXSmzj81l25vH2qCeNRieTq8D40v4DP8U4FhPQIhAbEVmfsEl7Ono6VHHw0tXPbTfKz3GP8E2M_tedVR-tDrutDYUZAhqwQNAG1uoupEqCRBGzpELO-Cfeq7xWeo7KDvt1CkYMLrELYSZ1LzLBBR5dmUWmJg2kbDhoi6EiManJeqrLDsMneR_mpPiAkkLlBLmWekkTGlIyYc"/>
+<img class="rounded-xl w-full aspect-[3/4] object-cover ambient-shadow transition-transform hover:scale-[1.02]" data-alt="A modern lifestyle shot featuring a group of people quietly working on laptops in a spacious, high-ceilinged cafe. The design is industrial-minimalist with hanging pendant lights and large windows. The overall mood is one of focused energy and sophisticated tranquility, perfectly aligned with a premium brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk_w9cDMuATWDOzleLwIbA-r7Xnl0po_tPXh1jTV8TU-h3G6iTIG_-pWit_F1GhIsHJm0OYXIgV_o3QA1Bvul94-zEmfDleRJn1IEYc0gC6gvW2u5Elv8uxQxSIsEE86LPBhD9eD2kW24GIXxnBkDXQpXNq-0KhENp1GgfCUbA8nJHrEbPRUKNhxYrZ2BU6hl40eiGqIVZ90xvfl6DzbR_RWPRAcBlx_TzEQnfSPGLqmlcF7Bb6ZOH9FppOeDbZFVsNDZEoJOHCj0"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Digital Menu Section -->
+<section class="py-section-gap bg-surface-container-low overflow-hidden" id="menu">
+<div class="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div class="max-w-xl">
+<span class="text-secondary font-label-sm text-label-sm uppercase tracking-[0.2em]">Selección de la casa</span>
+<h2 class="font-headline-lg text-headline-lg mt-4 text-primary">Nuestra Carta Digital</h2>
+</div>
+<button class="hidden md:flex items-center gap-2 text-primary font-bold hover:text-secondary transition-colors group" onclick="toggleMenuModal()">
+                    Explorar categorías 
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Bento Grid Menu Preview -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Alimentos -->
+<div class="group relative h-[200px] rounded-xl overflow-hidden ambient-shadow cursor-pointer" onclick="toggleMenuModal(); setTimeout(() => switchMenuTab('alimentos'), 100);">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Crepas, alitas y snacks artesanales de Bokobá" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAldz0TmLbskSGA27aHeQBBL7VNiju9N5HsuijaVv-ChHaVwfuQ5DmBez4FeFw8j2OY4iT0aHRwT2Wobqn6QguDnG3XYLAFchJxg5RLyaZGJQo_4VrOQ4Byf8P0NdKVpa4hmXwd3H3a5jlurTatjt54DQYCCfS_k0fgHoi9tWxaAfhosOAUtf9oLxUJGVwPZ5C3NAYb7h7Qbv_QoBxCmDoLcuiJhT5-gXN9vkxqENqjtp4nyKJfthgxi1eGdR4IbfF7nYlcvoCSflg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent p-8 flex flex-col justify-end">
+<span class="text-white/60 font-label-sm text-label-sm uppercase tracking-widest mb-2">🥞 Menú</span>
+<h3 class="text-white font-headline-md text-headline-md">Alimentos & Snacks</h3>
+<p class="text-white/80 font-body-md text-body-md mt-2">Crepas, alitas, boneless y más.</p>
+</div>
+</div>
+<!-- Bebidas Calientes -->
+<div class="group relative h-[200px] rounded-xl overflow-hidden ambient-shadow cursor-pointer" onclick="toggleMenuModal(); setTimeout(() => switchMenuTab('calientes'), 100);">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Capuchinos y bebidas calientes de especialidad" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJmeOt4U1pZASFZ2aZZxVcNb0j61VJlxc9HTIQ3nPCf0-xtzwJPP4ZmQlVMYHWKuCp_oRvMQ_ZTLZocnHdiDdeeEgsROI2So8Ude3Qs4JnkAHKZctSUZzmgu3qN3u6q-ZvPxprl_nK6d7xFcHq-yD3EoAry78z1TWWqbOJMGLz56En3wErsnWtO1SAikAQxN6h-SmF2RNRd86wwtlwuJioMNj7qXDngL8DXBkyajvRHgg9gmC1C7s9vk4oJ3njZit0pxQ46f-uju0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent p-8 flex flex-col justify-end">
+<span class="text-white/60 font-label-sm text-label-sm uppercase tracking-widest mb-2">☕ Calientes</span>
+<h3 class="text-white font-headline-md text-headline-md">Bebidas Calientes</h3>
+<p class="text-white/80 font-body-md text-body-md mt-2">Capuchinos, lattes, chai y más.</p>
+</div>
+</div>
+<!-- Bebidas Frías -->
+<div class="group relative h-[200px] rounded-xl overflow-hidden ambient-shadow cursor-pointer" onclick="toggleMenuModal(); setTimeout(() => switchMenuTab('frias'), 100);">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Frappes y bebidas frías refrescantes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdLID-YLfvvPxpvb6Z5pZ1GA10wrtqV2UGRKpfRHNkTxGOZYlW_sgBzVkgT5HITAcQCsBc0Oe_Ktbzzn1QHjbeSnVDSQ3ZnKNUngnGf2lBqN2VRam0dJ4nBhAUhNXiB79aJYa4ATvKNmE7_JcJeN2Aq3W3v9PsC1ZcI1ifJJsWjJ9Akw3dld6eOO0lUvBq8BsoCUOKs6twllobBI7-7C5Kda82NycrvlEBj9FHjaPgQq6XqSXKblq0TkWAViWHnfZWPyzMHc8dW5w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-tertiary/90 to-transparent p-8 flex flex-col justify-end">
+<span class="text-white/60 font-label-sm text-label-sm uppercase tracking-widest mb-2">🧋 Frías</span>
+<h3 class="text-white font-headline-md text-headline-md">Frappes & Especiales</h3>
+<p class="text-white/80 font-body-md text-body-md mt-2">Frappes, malteadas, sodas y smoothies.</p>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-12">
+<button class="bg-primary text-on-primary px-12 py-5 rounded-lg font-bold hover:bg-primary-container transition-all duration-300 ambient-shadow flex items-center gap-3" onclick="toggleMenuModal()">
+<span class="material-symbols-outlined">menu_book</span>
+                    Ver Menú Completo
+                </button>
+</div>
+</div>
+</section>
+<!-- Social Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto" id="social">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary">Momentos Bokobá</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg mt-4">Únete a nuestra comunidad en <a href="https://www.instagram.com/bokoba__/" target="_blank" rel="noopener noreferrer" class="text-secondary font-bold hover:underline transition-all">@bokoba__</a></p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="aspect-square relative group overflow-hidden rounded-xl">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A lifestyle photograph of a person holding a warm ceramic coffee cup with both hands, wearing a cozy knit sweater. The background is a soft-focus cafe interior. The image evokes warmth, comfort, and the sensory pleasure of a good cup of coffee in a minimalist, light-filled environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVcWNqsOCRHrVa63zNRKdGUdLQtrkpBwH60cxZI4PpiaP2oGGEAaTFc2K-GWLQmtcSTDbqvrRhJlsxKm0PyIdnXA0uejcHz1oRsh5cmjDvXAIGcEN029ldWgdTMK9JdvbN-aql97644Oxns7iYHoAacBAViZhvMlGtJ8HWyCRsaFmUEEF97ECfBtkmPeWJbaDRPcar8CIWa2oikFMVUCYioeacERN8h71PgXflLmHJGanLzbdvQkQCxaP3VgpnmDNi9qj-bnPyWVs"/>
+<a href="https://www.instagram.com/bokoba__/" target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+</a>
+</div>
+<div class="aspect-square relative group overflow-hidden rounded-xl">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Top-down view of a modern breakfast spread on a light wood table, featuring a latte with art, a fresh croissant, and a small vase with a single wildflower. The aesthetic is clean and organized, emphasizing a sophisticated and tranquil start to the day in a premium coffee shop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAahlRQoo_Rv6OlNnw8sVXVrXfRZho8bH0LKtAEbWOKkNo26yUKncMsRkCGvaXPmhK8EEgXNcozQMn3pDwek33DFcWKpgAHzSZdZlni7At5YoxWlvThh5vnfvjzPmbXr78jnWB-AjJGx6zfm-JKKyd3thVBf7o57BCLJV4nQN7QDMsWSDfh05cAyvOmGpPos81uNAfSv2abbg3g391SZ_r5xz4XJPk86h2Q86yv4M9G9bCC8WvLWuqL7ufqKqm3OOIdHPEuoZaVMpM"/>
+<a href="https://www.instagram.com/bokoba__/" target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+</a>
+</div>
+<div class="aspect-square relative group overflow-hidden rounded-xl">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close-up of coffee beans falling slowly into a glass hopper. The shot uses a shallow depth of field, highlighting the glossy texture of the roasted beans. The lighting is rich and warm, conveying the quality and freshness of the ingredients in a high-end coffee shop setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnI5Csl104COM3WI5h6Dstn5kdl0_aCb1DXcVKqfKfsVoWlCqdSEBzVpFkNF9EqtZ4SxWo9Ct1RUdQvVR8JCQXzn78THH6LyIm9fiQHGYZASsj5xxNraAPkhZ2vHEILfidl8VhN1wd-q0Inf8lmikodBark9W7M-PjgEr8bgZA4f40zsegMKGyHre-pi16g2zOLvDcWQgNkmRcBjNQ9MpJl-r1HTGiabKGA7MSaZC8m6O06exHLowWwSK3_rM9-iyB4602aQeND9w"/>
+<a href="https://www.instagram.com/bokoba__/" target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+</a>
+</div>
+<div class="aspect-square relative group overflow-hidden rounded-xl">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A minimalist shot of a glass of iced coffee with milk swirling elegantly inside. The glass is placed on a white surface with a few drops of condensation on the exterior. The light is bright and airy, reflecting a refreshing and sophisticated aesthetic for a modern beverage menu." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdLID-YLfvvPxpvb6Z5pZ1GA10wrtqV2UGRKpfRHNkTxGOZYlW_sgBzVkgT5HITAcQCsBc0Oe_Ktbzzn1QHjbeSnVDSQ3ZnKNUngnGf2lBqN2VRam0dJ4nBhAUhNXiB79aJYa4ATvKNmE7_JcJeN2Aq3W3v9PsC1ZcI1ifJJsWjJ9Akw3dld6eOO0lUvBq8BsoCUOKs6twllobBI7-7C5Kda82NycrvlEBj9FHjaPgQq6XqSXKblq0TkWAViWHnfZWPyzMHc8dW5w"/>
+<a href="https://www.instagram.com/bokoba__/" target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+</a>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="py-section-gap bg-surface" id="reviews">
+<div class="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary text-center mb-16">Lo que dicen de nosotros</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="glass-card p-8 rounded-xl ambient-shadow">
+<div class="flex gap-1 text-secondary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic mb-6">
+                        "El mejor espresso de la zona. El ambiente es increíblemente tranquilo, perfecto para una mañana de lectura."
+                    </p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-primary">AM</div>
+<div>
+<span class="block font-bold text-primary">Andrea Martínez</span>
+<span class="text-outline font-label-sm text-label-sm">Local Guide</span>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="glass-card p-8 rounded-xl ambient-shadow">
+<div class="flex gap-1 text-secondary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic mb-6">
+                        "Un santuario para el café de especialidad. Recomiendo mucho probar sus métodos de filtrado artesanal."
+                    </p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-secondary">RR</div>
+<div>
+<span class="block font-bold text-primary">Ricardo Ramos</span>
+<span class="text-outline font-label-sm text-label-sm">Coffee Enthusiast</span>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="glass-card p-8 rounded-xl ambient-shadow">
+<div class="flex gap-1 text-secondary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic mb-6">
+                        "Me encanta venir a trabajar aquí. La luz natural y el servicio son excepcionales. ¡La repostería es de otro mundo!"
+                    </p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center font-bold text-on-primary">SL</div>
+<div>
+<span class="block font-bold text-primary">Sofía Luna</span>
+<span class="text-outline font-label-sm text-label-sm">Freelancer</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Location Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto" id="contact">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div class="space-y-8">
+<h2 class="font-headline-lg text-headline-lg text-primary">Encuéntranos</h2>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-1">location_on</span>
+<div>
+<p class="font-bold text-primary">Ubicación</p>
+<p class="text-on-surface-variant">Calle del Café 123, Colonia Centro<br/>Guadalajara, Jalisco.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-1">schedule</span>
+<div>
+<p class="font-bold text-primary">Horarios</p>
+<p class="text-on-surface-variant">Lunes a Viernes: 08:00 - 21:00<br/>Sábados y Domingos: 09:00 - 22:00</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-1">call</span>
+<div>
+<p class="font-bold text-primary">Contacto</p>
+<p class="text-on-surface-variant">33 2255 9227<br/>hola@bokoba.coffee</p>
+</div>
+</div>
+</div>
+<div class="pt-4 flex gap-4">
+<a href="https://www.google.com/maps/place/Bokoba+caf%C3%A9/@20.6247527,-103.2591715,18z/data=!4m6!3m5!1s0x8428b5007254eb65:0x991d7e5e4c2b856f!8m2!3d20.6234323!4d-103.2552233!16s%2Fg%2F11x0qyfp59" target="_blank" rel="noopener noreferrer" class="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold hover:bg-primary-container transition-all inline-block">Ver en Google Maps</a>
+<a href="https://www.instagram.com/bokoba__/" target="_blank" rel="noopener noreferrer" class="border border-primary text-primary px-8 py-3 rounded-lg font-bold hover:bg-primary-fixed transition-all inline-flex items-center gap-2">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+Síguenos en Instagram
+</a>
+</div>
+</div>
+<div class="rounded-2xl overflow-hidden ambient-shadow h-[250px] bg-surface-container relative group">
+<img class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" data-alt="A stylized, minimalist map representation showing a central urban location with soft gray and off-white tones. A single, distinct red marker pinpointed on a street corner highlights the destination. The visual style is clean and modern, integrated into a light-mode UI design for a premium cafe." data-location="Guadalajara" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKMVzoFXZcGpBqq38V-VYDO5Svx4DzbadO3w7I95mWpKs3K46UyWT60Td8kaeWko6SKlLNZACWm12pA30qr-mwMx-L8iais3WgkexwQlWZdbT-mcGmF9e8BRC_YZ-Cb63JWboj6wWkeSRxfeY1mf_-9d5P_v2IlqoZPwdcyU8iu3_RlwvjkDjIIl2o6IxEhA4AgGB5-rcWodGyeMLOcfnfLh_vq2q2WdcVPwt5BMBQuBsWI0xdgYROmtfn__GgLfIt1US6jVJIOjc"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="bg-white p-4 rounded-full shadow-lg border border-primary/10">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest py-20 border-t border-primary/5">
+<div class="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto flex flex-col items-center text-center">
+<img alt="Bokobá Logo" class="h-16 mb-8 brightness-0 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFMrF_a-f0imYxp587LVsWjeKo7QkZcNR_XgJHQAt-iwzJHfn4VoxKFRBTUjnYPc2WSCI7jyd25pJat_vtHQJlbjq7dYP-MGWoAKXdlubHqCTOZixV3Zw9TPOpjHVGdkoe7on-vKrAi3RNvuBiD30u5uRGJ7RJ-DGQDaXjLU_oDMA11otRCN9Q4jJSBlY-Opcm2uImPS17ybTXLaLJZg1qbZvkjxr7eTduGHim75x3QeGEplRmWkRPF5EhaRI7-I-F-DQ1xLSbdxw"/>
+<div class="flex justify-center gap-6 mb-8">
+<a href="https://www.instagram.com/bokoba__/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-on-primary text-primary transition-all duration-300 group">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+</a>
+<a href="https://www.google.com/maps/place/Bokoba+caf%C3%A9/@20.6247527,-103.2591715,18z/data=!4m6!3m5!1s0x8428b5007254eb65:0x991d7e5e4c2b856f!8m2!3d20.6234323!4d-103.2552233!16s%2Fg%2F11x0qyfp59" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-on-primary text-primary transition-all duration-300 group">
+<span class="material-symbols-outlined text-xl">location_on</span>
+</a>
+</div>
+<div class="flex flex-wrap justify-center gap-8 mb-12">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-sm text-label-sm uppercase tracking-widest" href="#">Sustainability</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-sm text-label-sm uppercase tracking-widest" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-sm text-label-sm uppercase tracking-widest" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-sm text-label-sm uppercase tracking-widest" href="#">Careers</a>
+</div>
+<p class="text-outline font-body-md text-body-md">
+                © 2024 Bokobá Coffee. Hand-crafted in tradition.
+            </p>
+<p class="text-outline font-label-sm text-label-sm mt-4 opacity-50">
+                Diseñado por YourBrand Studio
+            </p>
+</div>
+</footer>
+<!-- Interactive Menu Modal (Full) -->
+<div class="fixed inset-0 z-[60] hidden" id="menuModal">
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-md" onclick="toggleMenuModal()"></div>
+<div class="absolute inset-y-0 right-0 w-full md:w-[680px] bg-white shadow-2xl overflow-y-auto silk-border">
+<!-- Modal Header -->
+<div class="sticky top-0 bg-white/95 backdrop-blur-md z-10 px-6 md:px-10 pt-8 pb-4 border-b border-primary/5">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Nuestro Menú</h2>
+<p class="text-on-surface-variant font-body-md text-sm mt-1">Servicio a domicilio: <a href="tel:3322559227" class="text-secondary font-bold">33 2255 9227</a></p>
+</div>
+<button class="w-10 h-10 rounded-full border border-primary/10 flex items-center justify-center hover:bg-surface-container transition-colors" onclick="toggleMenuModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Tab Navigation -->
+<div class="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1">
+<button class="menu-tab active flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300" data-tab="alimentos" onclick="switchMenuTab('alimentos')">
+<span class="material-symbols-outlined text-lg">restaurant</span>
+Alimentos
+</button>
+<button class="menu-tab flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300" data-tab="calientes" onclick="switchMenuTab('calientes')">
+<span class="material-symbols-outlined text-lg">coffee</span>
+Bebidas Calientes
+</button>
+<button class="menu-tab flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300" data-tab="frias" onclick="switchMenuTab('frias')">
+<span class="material-symbols-outlined text-lg">local_cafe</span>
+Bebidas Frías
+</button>
+</div>
+</div>
+
+<!-- Menu Content -->
+<div class="px-6 md:px-10 py-8 space-y-0">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TAB: ALIMENTOS Y SNACKS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="menu-panel" id="panel-alimentos">
+
+<!-- Crepas Dulces -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-headline-md text-xl font-bold text-primary flex items-center gap-2">
+<span class="text-2xl">🥞</span> Crepas Dulces
+</h3>
+<span class="bg-secondary/10 text-secondary font-bold px-4 py-1.5 rounded-full text-sm">$60</span>
+</div>
+<div class="bg-primary-fixed/30 rounded-xl p-4 mb-4">
+<p class="text-primary font-bold text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">info</span>
+Escoge 3 ingredientes · Ingrediente extra $10
+</p>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Nutella</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Lechera</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Cajeta</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Mermelada de Fresa</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Mermelada de Zarzamora</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Durazno</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Manzana</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Fresa</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Plátano</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Nuez</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Arándano</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Philadelphia</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg col-span-2">Chantilli</span>
+</div>
+</div>
+
+<hr class="border-primary/5 my-6"/>
+
+<!-- Crepas Saladas -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-headline-md text-xl font-bold text-primary flex items-center gap-2">
+<span class="text-2xl">🧀</span> Crepas Saladas
+</h3>
+<span class="bg-secondary/10 text-secondary font-bold px-4 py-1.5 rounded-full text-sm">$60</span>
+</div>
+<div class="bg-primary-fixed/30 rounded-xl p-4 mb-4">
+<p class="text-primary font-bold text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">info</span>
+Escoge 3 ingredientes · Ingrediente extra $10
+</p>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Queso Manchego</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Philadelphia</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Salchicha</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Salami</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Piña</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Champiñones</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg col-span-2">Pastor</span>
+</div>
+</div>
+
+<hr class="border-primary/5 my-6"/>
+
+<!-- Snaks Menú -->
+<div class="mb-10">
+<div class="flex items-center gap-2 mb-5">
+<span class="text-2xl">🍟</span>
+<h3 class="font-headline-md text-xl font-bold text-primary">Snaks Menú</h3>
+</div>
+
+<div class="space-y-3">
+<div class="flex justify-between items-center py-3 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<div>
+<span class="font-bold text-primary">Papas Gajo</span>
+</div>
+<span class="text-secondary font-bold">$60</span>
+</div>
+<div class="flex justify-between items-center py-3 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<div>
+<span class="font-bold text-primary">Papas a la Francesa</span>
+<p class="text-xs text-on-surface-variant mt-0.5">Combínalas con tu aderezo favorito</p>
+</div>
+<span class="text-secondary font-bold">$40</span>
+</div>
+<div class="flex justify-between items-center py-3 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<div>
+<span class="font-bold text-primary">Alitas CH</span>
+<p class="text-xs text-on-surface-variant mt-0.5">6 pz aprox</p>
+</div>
+<span class="text-secondary font-bold">$70</span>
+</div>
+<div class="flex justify-between items-center py-3 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<div>
+<span class="font-bold text-primary">Alitas Gde</span>
+<p class="text-xs text-on-surface-variant mt-0.5">12 pz aprox</p>
+</div>
+<span class="text-secondary font-bold">$140</span>
+</div>
+</div>
+
+<div class="bg-secondary/5 rounded-xl p-4 mt-4">
+<p class="text-sm font-bold text-secondary mb-2">Sabores de Alitas:</p>
+<p class="text-sm text-on-surface-variant">Mango Habanero · BBQ · Red Hot · Lemon Pepper</p>
+<p class="text-xs text-outline mt-1 italic">Pueden ir combinadas</p>
+</div>
+</div>
+
+<hr class="border-primary/5 my-6"/>
+
+<!-- Especiales del Pizarrón -->
+<div class="mb-10">
+<div class="flex items-center gap-2 mb-5">
+<span class="text-2xl">✨</span>
+<h3 class="font-headline-md text-xl font-bold text-primary">Especiales del Pizarrón</h3>
+</div>
+
+<div class="space-y-3">
+<div class="flex justify-between items-center py-3 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Aros de Cebolla</span>
+<span class="text-secondary font-bold">$50</span>
+</div>
+<div class="flex justify-between items-center py-3 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Dedos de Queso</span>
+<span class="text-secondary font-bold">$75</span>
+</div>
+<div class="flex justify-between items-center py-3 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<div>
+<span class="font-bold text-primary">Boneless CH</span>
+</div>
+<span class="text-secondary font-bold">$85</span>
+</div>
+<div class="flex justify-between items-center py-3 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<div>
+<span class="font-bold text-primary">Boneless Gde</span>
+</div>
+<span class="text-secondary font-bold">$175</span>
+</div>
+</div>
+</div>
+
+</div><!-- end panel-alimentos -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TAB: BEBIDAS CALIENTES -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="menu-panel hidden" id="panel-calientes">
+
+<!-- Capuchinos -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-5">
+<h3 class="font-headline-md text-xl font-bold text-primary flex items-center gap-2">
+<span class="text-2xl">☕</span> Capuchinos
+</h3>
+<span class="bg-secondary/10 text-secondary font-bold px-4 py-1.5 rounded-full text-sm">$60</span>
+</div>
+
+<div class="space-y-3">
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Capuchino Original</span>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Capuchino Moka</span>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Capuchino con Esencia</span>
+<p class="text-xs text-on-surface-variant mt-0.5">Banana · Avellana · Kaluha · Baileys</p>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Americano</span>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Americano con Esencia</span>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Chai Caliente</span>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Matcha Caliente</span>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Chocolate Caliente</span>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Chocobanana</span>
+</div>
+</div>
+</div>
+
+<hr class="border-primary/5 my-6"/>
+
+<!-- Latte Helado -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-5">
+<h3 class="font-headline-md text-xl font-bold text-primary flex items-center gap-2">
+<span class="text-2xl">🧊</span> Latte Helado
+</h3>
+<span class="bg-secondary/10 text-secondary font-bold px-4 py-1.5 rounded-full text-sm">$60</span>
+</div>
+
+<div class="space-y-3">
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Latte Helado Original</span>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Latte Helado con Esencia</span>
+<p class="text-xs text-on-surface-variant mt-0.5">Banana · Avellana · Kaluha · Baileys</p>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Macchiato Helado Caramel</span>
+<p class="text-xs text-on-surface-variant mt-0.5">Café y Caramelo</p>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Taro Helado</span>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Matcha Helado</span>
+</div>
+<div class="py-2.5 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Chai Helado</span>
+</div>
+</div>
+</div>
+
+<hr class="border-primary/5 my-6"/>
+
+<!-- Affogato -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-5">
+<h3 class="font-headline-md text-xl font-bold text-primary flex items-center gap-2">
+<span class="text-2xl">🍨</span> Affogato
+</h3>
+<span class="bg-secondary/10 text-secondary font-bold px-4 py-1.5 rounded-full text-sm">$60</span>
+</div>
+<div class="py-3 px-4 bg-surface-container-low rounded-xl">
+<span class="font-bold text-primary">Helado de Vainilla con Café</span>
+<p class="text-xs text-on-surface-variant mt-0.5">La combinación perfecta de lo frío y lo caliente</p>
+</div>
+</div>
+
+</div><!-- end panel-calientes -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TAB: BEBIDAS FRÍAS, FRAPPES Y ESPECIALES -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="menu-panel hidden" id="panel-frias">
+
+<!-- Frappes -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-5">
+<h3 class="font-headline-md text-xl font-bold text-primary flex items-center gap-2">
+<span class="text-2xl">🧋</span> Bebidas Frappes
+</h3>
+<span class="bg-secondary/10 text-secondary font-bold px-4 py-1.5 rounded-full text-sm">$60</span>
+</div>
+
+<p class="text-sm font-bold text-secondary mb-3">Sabores Tradicionales y Dulces</p>
+<div class="grid grid-cols-2 gap-2 mb-5">
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Chocolate</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Vainilla</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Fresa</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Chocomenta</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Oreo</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Moka Banana</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Banana</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Taro</span>
+</div>
+
+<p class="text-sm font-bold text-secondary mb-3">Sabores de Cafetería y Licores</p>
+<div class="grid grid-cols-2 gap-2">
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Capuchino Clásico</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Avellana</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Matcha</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Cajeta</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Mazapán</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Kaluha</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Rompope</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Baileys</span>
+</div>
+</div>
+
+<hr class="border-primary/5 my-6"/>
+
+<!-- Malteada Cremosa -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-5">
+<h3 class="font-headline-md text-xl font-bold text-primary flex items-center gap-2">
+<span class="text-2xl">🥤</span> Malteada Cremosa
+</h3>
+<span class="bg-secondary/10 text-secondary font-bold px-4 py-1.5 rounded-full text-sm">$60</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Fresa</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Chocolate</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Vainilla</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Oreo</span>
+</div>
+</div>
+
+<hr class="border-primary/5 my-6"/>
+
+<!-- Smoothies -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-5">
+<h3 class="font-headline-md text-xl font-bold text-primary flex items-center gap-2">
+<span class="text-2xl">🍓</span> Smoothies
+</h3>
+<span class="bg-secondary/10 text-secondary font-bold px-4 py-1.5 rounded-full text-sm">$60</span>
+</div>
+<p class="text-xs text-on-surface-variant mb-3 italic">Base de Agua</p>
+<div class="grid grid-cols-2 gap-2">
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Fresa</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Frutos Rojos</span>
+</div>
+</div>
+
+<hr class="border-primary/5 my-6"/>
+
+<!-- Soda Italiana -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-5">
+<h3 class="font-headline-md text-xl font-bold text-primary flex items-center gap-2">
+<span class="text-2xl">🫧</span> Soda Italiana
+</h3>
+<span class="bg-secondary/10 text-secondary font-bold px-4 py-1.5 rounded-full text-sm">$60</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Chicle</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Cereza</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Blueberry</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg">Menta</span>
+<span class="text-on-surface-variant text-sm py-1.5 px-3 bg-surface-container rounded-lg col-span-2">Banana</span>
+</div>
+</div>
+
+<hr class="border-primary/5 my-6"/>
+
+<!-- Clericot & Chocomilk -->
+<div class="mb-10">
+<div class="space-y-3">
+<div class="flex justify-between items-center py-3 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary flex items-center gap-2"><span class="text-xl">🍷</span> Clericot Clásico</span>
+<span class="text-secondary font-bold">$60</span>
+</div>
+<div class="py-3 px-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center">
+<span class="font-bold text-primary flex items-center gap-2"><span class="text-xl">🍫</span> Chocomilk</span>
+<span class="text-secondary font-bold">$25</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Fresa · Chocolate · Vainilla</p>
+</div>
+</div>
+</div>
+
+</div><!-- end panel-frias -->
+
+</div><!-- end menu content -->
+
+<!-- Floating bottom bar -->
+<div class="sticky bottom-0 bg-white/95 backdrop-blur-md border-t border-primary/5 px-6 md:px-10 py-4">
+<a href="tel:3322559227" class="w-full bg-primary text-on-primary py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined">call</span>
+Pedir a domicilio: 33 2255 9227
+</a>
+</div>
+</div>
+</div>
+</div>
+<script>
+        function toggleMenuModal() {
+            const modal = document.getElementById('menuModal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Navbar interaction on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('py-2', 'shadow-sm');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('py-2', 'shadow-sm');
+                nav.classList.add('py-4');
+            }
+        });
+        // Menu tab switching
+        function switchMenuTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.menu-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.menu-tab[data-tab="${tabName}"]`).classList.add('active');
+
+            // Update panels
+            document.querySelectorAll('.menu-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            document.getElementById(`panel-${tabName}`).classList.remove('hidden');
+
+            // Scroll modal content to top
+            const modalContent = document.querySelector('#menuModal .overflow-y-auto');
+            if (modalContent) modalContent.scrollTop = 0;
+        }
+    </script>
+</body></html>
