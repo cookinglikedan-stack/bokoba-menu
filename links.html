@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bokobá | Links</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #28351c; /* Verde Bosque Profundo */
+            --secondary: #785839; /* Café Tostado */
+            --accent: #546346; /* Verde Oliva */
+            --cream: #fcf9f8; /* Fondo Crema */
+            --white: #FFFFFF;
+            --sombra: rgba(40, 53, 28, 0.12);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fcf9f8 0%, #f0eded 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: var(--primary);
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(40, 53, 28, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(120, 88, 57, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--white);
+            box-shadow: 0 10px 30px var(--sombra);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: white;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(40, 53, 28, 0.2);
+        }
+
+        .restaurant-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .handle {
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 1rem;
+            opacity: 0.8;
+            letter-spacing: 0.5px;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .link-card {
+            position: relative;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 20px 24px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            box-shadow: 0 4px 15px var(--sombra);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(40, 53, 28, 0.05);
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .link-card:nth-child(1) { animation-delay: 0.1s; }
+        .link-card:nth-child(2) { animation-delay: 0.2s; }
+        .link-card:nth-child(3) { animation-delay: 0.3s; }
+        .link-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(40, 53, 28, 0.15);
+            border-color: var(--accent);
+        }
+
+        .link-card:hover .card-icon {
+            background: var(--primary);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .link-card:hover .card-title {
+            color: var(--primary);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(40, 53, 28, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            opacity: 0.7;
+        }
+
+        .card-arrow {
+            color: var(--accent);
+            font-size: 1rem;
+            opacity: 0.4;
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--secondary);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .social-footer {
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.5s backwards;
+        }
+
+        .social-text {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px var(--sombra);
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-4px);
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .leaf-drip {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            z-index: 10;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 40px 16px; }
+            .restaurant-name { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="leaf-drip"></div>
+
+    <div class="container">
+        <header class="profile-section">
+            <div class="logo-container">
+                <div class="logo">B</div>
+            </div>
+            <h1 class="restaurant-name">Bokobá</h1>
+            <p class="handle">@bokoba__</p>
+        </header>
+
+        <nav class="links-container">
+            <!-- Menú Digital -->
+            <a href="index.html#menu" class="link-card">
+                <div class="card-icon">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Nuestro Menú</div>
+                    <div class="card-subtitle">Café, snacks y especialidades</div>
+                </div>
+                <div class="card-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <!-- Pedidos WhatsApp -->
+            <a href="https://wa.me/523322559227" target="_blank" class="link-card">
+                <span class="badge">Nuevo</span>
+                <div class="card-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Hacer un Pedido</div>
+                    <div class="card-subtitle">WhatsApp Directo</div>
+                </div>
+                <div class="card-arrow">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+            </a>
+
+            <!-- Ubicación -->
+            <a href="https://www.google.com/maps/place/Bokoba+caf%C3%A9/@20.6234323,-103.2552233,17z" target="_blank" class="link-card">
+                <div class="card-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Ubicación</div>
+                    <div class="card-subtitle">Ret. Loma Apatzingán 305</div>
+                </div>
+                <div class="card-arrow">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+            </a>
+
+            <!-- Reseña Google -->
+            <a href="https://www.google.com/search?sca_esv=aa74034db299556c&sxsrf=ANbL-n4GJeffsW1rUhl-QDxWLQkCNPf36g:1780326384427&q=opiniones+de+bokoba+caf%C3%A9+tonal%C3%A1&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOU29IOHIlNmZh_4YfZETxXMjpWbr1i3Z3z611xCZJUar8vFTXVqEgkIQ27-9heNI0O-dnC5s5KfVV9aliUvIW5hbMfr1mJyFt9QSKfd2TCjIa42Hjg%3D%3D&sa=X&ved=2ahUKEwihmOnNqOaUAxWwmmoFHZnYBREQk8gLegQIGxAB&ictx=1#ebo=4" target="_blank" class="link-card">
+                <div class="card-icon">
+                    <i class="fas fa-star" style="color: #f1c40f;"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Déjanos tu opinión</div>
+                    <div class="card-subtitle">Califícanos en Google Maps</div>
+                </div>
+                <div class="card-arrow">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+            </a>
+        </nav>
+
+        <footer class="social-footer">
+            <p class="social-text">Encuéntranos en redes</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/bokoba__/" target="_blank" class="social-btn">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/bokoba.cafe" target="_blank" class="social-btn">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://wa.me/523322559227" target="_blank" class="social-btn">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
